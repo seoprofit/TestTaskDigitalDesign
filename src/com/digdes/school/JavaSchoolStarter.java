@@ -157,7 +157,19 @@ public class JavaSchoolStarter {
         if ((query.getConditions()) == null) {
             selectAllLines.addAll(database.getDataBase());
             System.out.println(selectAllLines);
-            return selectAllLines;
+
+        }
+        else {
+
+            Conditions condition = query.getConditions().get(0);
+            for (int i = 0; i < database.getDataBase().size(); i++) {
+                if (database.getDataBase().get(i).get(condition.getKey()).equals(condition.getValue())) {
+                    selectAllLines.add(database.getDataBase().get(i));
+
+                }
+            }
+            System.out.println(selectAllLines);
+
         }
         return selectAllLines;
     }
